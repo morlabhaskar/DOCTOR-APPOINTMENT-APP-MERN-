@@ -1,18 +1,27 @@
 import React from 'react';
-import './App.css';
-import 'react-bootstrap'
-// import 'antd/antd.css';
-// import './antd.css';
-import {MedicineBoxFilled } from '@ant-design/icons';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './pages/login/login';
+import Register from './pages/register/register';
+import {Toaster} from 'react-hot-toast' 
+import Home from './pages/home/home';
 
 
 
 
 function App() {
   return (
-    <div className="App p-5">
-      <h1><MedicineBoxFilled />Health</h1>
-    </div>
+    <BrowserRouter>
+      <Toaster position="top-center" reverseOrder={false}/>
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/' element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+
+
+
+
   );
 }
 

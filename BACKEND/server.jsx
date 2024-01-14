@@ -15,22 +15,24 @@
 
 
 // import express from "express";
-const express = require ("express");
+const express = require("express");
 // import bodyParser from "body-parser";
-const bodyParser =require ("body-parser");
+const bodyParser = require("body-parser");
 // import cors from "cors";
-const cors = require ("cors");
-// import student from "./models/student.js"
-// import student1 from "./models/student1";
-// import mongoose from "mongoose";
-const mongoose = require ("mongoose");
-
 const app = express();
+const cors = require("cors");
+const mongoose = require("mongoose");
+
+app.use(express.json());
+const userRoute = require("./routes/userRoute")
+
 app.use(cors())
 app.use(bodyParser.json())
-mongoose.connect("mongodb+srv://morlabhaskar306:ZdG5JZtg8UTfugK0@bhaskar.smjwtfm.mongodb.net/HEALTH")
-// mongoose.connect(process.env.MONGO_URL)
-.then(()=> app.listen(5000))
-.then(()=> app.listen(()=>console.log("server running")))
-.then(()=>console.log("Connected to mongoDB"))
-.catch((err)=>console.log(err))
+
+app.use('/api/user', userRoute);
+const mongoDB_url = 'mongodb+srv://morlabhaskar306:ZdG5JZtg8UTfugK0@bhaskar.smjwtfm.mongodb.net/HEALTH';
+mongoose.connect(mongoDB_url).catch((error) => console.log(error))
+    .then(() => app.listen(5000))
+    .then(() => app.listen(() => console.log("server running")))
+    .then(() => console.log("Connected to mongoDB"))
+    .catch((error) => console.log(error))
