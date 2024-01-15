@@ -24,7 +24,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 app.use(express.json());
-const userRoute = require("./routes/userRoute")
+const userRoute = require("./routes/userRoute.jsx")
 
 app.use(cors())
 app.use(bodyParser.json())

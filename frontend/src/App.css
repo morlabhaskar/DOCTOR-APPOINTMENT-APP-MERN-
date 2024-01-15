@@ -1,0 +1,19 @@
+.spinner-parent {
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.300);
+    z-index: 9999;
+
+}
+.spinner-parent .spinner-grow {
+    height: 5rem;
+    width: 5rem;
+    border: 2px solid rgb(0, 0, 0);
+}

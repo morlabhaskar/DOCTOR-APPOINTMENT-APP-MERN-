@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../models/usermodel");
+const User = require("../models/usermodel.js");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+const authMiddleware = require ("./authmiddleware.jsx");
 
 router.post('/register', async (req, res) => {
     try {
@@ -39,7 +40,7 @@ router.post('/login', async (req, res) => {
             return res.status(200).send({message:"Password is Incorrect",success:false});
         }
         else {
-            const token = jwt.sign({id:user._id},process.env.SECRET,{
+            const token = jwt.sign({id:user._id},"Bhaskat_Healthy_app",{
                 expiresIn:"1d",
             });
             res.status(200).send({message:"Login Successful",success:true,data:token});
@@ -51,5 +52,24 @@ router.post('/login', async (req, res) => {
 
     }
 });
+
+router.post('get-user-info-by-id', authMiddleware, async(req,res) => {
+    try {
+        const user = await User.findOne({_id:req.body.userId});
+        if(!user) {
+            return res.status(200).send({message:"User does not Exist",success:false});
+
+        }
+        else {
+            res.status(200).send({success:true, data:{name:user.name,email:user.email,},});
+        }
+        
+    } 
+    catch (error) {
+        res.status(500).send({message:"Error getting user info",success:false,error});
+        console.log (error)
+        
+    }
+})
 
 module.exports = router;
