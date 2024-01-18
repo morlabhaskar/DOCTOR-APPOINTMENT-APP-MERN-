@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './layout.css'
 import { useSelector } from 'react-redux';
+import { Badge, Switch } from 'antd';
+// const {unseenNotifications} from
 
 const Layout = ({ children }) => {
+    const [show,setShow] = useState(false)
+    const onChange = (checked) => {
+        setShow(checked);
+      };
+
     const location = useLocation();
     const [collapse, setCollapse] = useState(false)
-    const {user} = useSelector((state)=>state.user)
+    const { user } = useSelector((state) => state.user)
     const navigate = useNavigate()
     const usermenu = [
         {
@@ -54,12 +61,12 @@ const Layout = ({ children }) => {
         },
     ];
     const MenuTobeRendered = user?.isAdmin ? adminmenu : usermenu;
-    
+
     return (
         <div className='main'>
             <div className='layout'>
                 <div className={`${collapse ? 'collapsed-slidebar' : 'slide'}`}>
-                {!collapse ? <i className="ri-close-line active-icon" onClick={() => setCollapse(true)}></i> : < i className="ri-menu-line active-icon"  onClick={() => setCollapse(false)}></i>}
+                    {!collapse ? <i className="ri-close-line active-icon" onClick={() => setCollapse(true)}></i> : < i className="ri-menu-line active-icon" onClick={() => setCollapse(false)}></i>}
                     {MenuTobeRendered.map((menu) => {
                         const isActive = location.pathname === menu.path;
                         return <div className={`menu-item ${isActive && 'active-menu-item'}`}>
@@ -68,21 +75,25 @@ const Layout = ({ children }) => {
                         </div>
                     })}
 
-                    <div className={`menu-item`} onClick={()=> {
+                    <div className={`menu-item`} onClick={() => {
                         localStorage.clear()
                         navigate('/login')
                     }}>
-                            <i className='ri-logout-box-line'></i>
-                            {!collapse && <Link to='/login'>Logout</Link>}
-                        </div>
+                        <i className='ri-logout-box-line'></i>
+                        {!collapse && <Link to='/login'>Logout</Link>}
+                    </div>
 
                 </div>
                 <div className='content'>
                     <div className='header '>
                         {/* {!collapse ? <i className="ri-close-circle-line active-icon" onClick={() => setCollapse(true)}></i> : < i className="ri-menu-line active-icon"  onClick={() => setCollapse(false)}></i>} */}
                         <div className=' notification-icon-div'>
-                            <i class="ri-notification-line notification-icon mx-4"></i>
-                           <Link to='profile' className='profile-link mx-3'>Hi..{user?.name}</Link>
+                            <Badge dot={show} count={user?.unseenNotifications.length} onClick={()=>navigate("/notifications")}>
+                                <i class="ri-notification-line notification-icon mx-4"></i>
+                            </Badge>
+                            <Switch onChange={onChange} checked={show} />
+
+                            <Link to='profile' className='profile-link mx-3'>Hi..{user?.name}</Link>
                         </div>
                     </div>
                     <div className='body'>

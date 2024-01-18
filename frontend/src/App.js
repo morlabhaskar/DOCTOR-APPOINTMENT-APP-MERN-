@@ -8,6 +8,9 @@ import Home from './pages/home/home';
 import { useSelector } from 'react-redux';
 import ProtectedRoutes from './components/protectedRoutes';
 import PublicRoutes from './components/publicRoutes';
+import ApplyDoctor from './pages/ApplyDoctor';
+import Appointments from './pages/Appointments';
+import Notifications from './components/Notifications';
 
 
 function App() {
@@ -27,6 +30,9 @@ function App() {
         <Route path='/login' element={<PublicRoutes><Login /></PublicRoutes>} />
         <Route path='/register' element={<PublicRoutes><Register /></PublicRoutes>} />
         <Route path='/' element={ <ProtectedRoutes> <Home /></ProtectedRoutes>}/>
+        <Route path='/apply-doctor' element={ <ProtectedRoutes> <ApplyDoctor /></ProtectedRoutes>}/>
+        <Route path='/appointments' element={ <ProtectedRoutes> <Appointments /></ProtectedRoutes>}/>
+        <Route path='/notifications' element={ <ProtectedRoutes> <Notifications /></ProtectedRoutes>}/>
       </Routes>
     </BrowserRouter>
   );
