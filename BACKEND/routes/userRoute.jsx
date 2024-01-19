@@ -101,4 +101,45 @@ router.post('/apply-doctor-account', authMiddleware ,async (req, res) => {
     }
 });
 
+//data transfer from unseen msg to seen msg
+router.post('/mark-all-notifications-as-seen', authMiddleware ,async (req, res) => {
+    try {
+        const user = await User.findOne({_id:req.body.userId});
+        const unseenNotifications = user.unseenNotifications;
+        const seenNotifications = user.seenNotifications;
+        seenNotifications.push(...unseenNotifications);
+        user.unseenNotifications=[];
+        user.seenNotifications = seenNotifications;
+        const updatedUser = await user.save();
+        updatedUser.password = undefined;
+
+        res.status(200).send({success:true,message:"All notifications marked as seen"});
+        
+    }
+    catch (error) {
+        res.status(500).send({ message: "Error notifications marked as seen", success: false,error})
+        console.log(error)
+
+    }
+});
+
+router.post('/detete-all-notifications', authMiddleware ,async (req, res) => {
+    try {
+        const user = await User.findOne({_id:req.body.userId});
+        user.unseenNotifications = []
+        user.seenNotifications = []
+        const updatedUser = await user.save();
+        updatedUser.password = undefined;
+
+        res.status(200).send({success:true,message:"Deleted All Messages"});
+        
+    }
+    catch (error) {
+        res.status(500).send({ message: "Error Deleted All Messages", success: false,error})
+        console.log(error)
+
+    }
+});
+
+
 module.exports = router;

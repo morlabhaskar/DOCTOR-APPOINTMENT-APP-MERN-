@@ -46,12 +46,12 @@ const Layout = ({ children }) => {
         },
         {
             name: "Users",
-            path: "/users",
+            path: "/admin/users-list",
             icon: "ri-user-line"
         },
         {
             name: "Doctors",
-            path: "/doctors",
+            path: "/admin/doctors-list",
             icon: "ri-hospital-line"
         },
         {
@@ -70,7 +70,7 @@ const Layout = ({ children }) => {
                     {MenuTobeRendered.map((menu) => {
                         const isActive = location.pathname === menu.path;
                         return <div className={`menu-item ${isActive && 'active-menu-item'}`}>
-                            <i className={menu.icon}></i>
+                            <Link to={menu.path}><i className={menu.icon}></i></Link>
                             {!collapse && <Link to={menu.path}>{menu.name}</Link>}
                         </div>
                     })}
@@ -88,7 +88,7 @@ const Layout = ({ children }) => {
                     <div className='header '>
                         {/* {!collapse ? <i className="ri-close-circle-line active-icon" onClick={() => setCollapse(true)}></i> : < i className="ri-menu-line active-icon"  onClick={() => setCollapse(false)}></i>} */}
                         <div className=' notification-icon-div'>
-                            <Badge dot={show} count={user?.unseenNotifications.length} onClick={()=>navigate("/notifications")}>
+                            <Badge dot={show} count={user?.unseenNotifications.length} onClick={()=>navigate("/notifications")} >
                                 <i class="ri-notification-line notification-icon mx-4"></i>
                             </Badge>
                             <Switch onChange={onChange} checked={show} />

@@ -25,11 +25,14 @@ const mongoose = require("mongoose");
 
 app.use(express.json());
 const userRoute = require("./routes/userRoute.jsx")
+const adminRoute = require("./routes/adminRoute.jsx")
 
 app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/api/user', userRoute);
+app.use('/api/admin',adminRoute);
+
 const mongoDB_url = 'mongodb+srv://morlabhaskar306:ZdG5JZtg8UTfugK0@bhaskar.smjwtfm.mongodb.net/HEALTH';
 mongoose.connect(mongoDB_url).catch((error) => console.log(error))
     .then(() => app.listen(5000))

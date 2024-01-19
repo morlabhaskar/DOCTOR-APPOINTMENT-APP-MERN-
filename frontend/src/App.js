@@ -11,6 +11,9 @@ import PublicRoutes from './components/publicRoutes';
 import ApplyDoctor from './pages/ApplyDoctor';
 import Appointments from './pages/Appointments';
 import Notifications from './components/Notifications';
+import UsersList from './pages/admin/UsersList';
+import DoctorsList from './pages/admin/DoctorsList';
+import Profile from './pages/admin/Profile';
 
 
 function App() {
@@ -33,6 +36,9 @@ function App() {
         <Route path='/apply-doctor' element={ <ProtectedRoutes> <ApplyDoctor /></ProtectedRoutes>}/>
         <Route path='/appointments' element={ <ProtectedRoutes> <Appointments /></ProtectedRoutes>}/>
         <Route path='/notifications' element={ <ProtectedRoutes> <Notifications /></ProtectedRoutes>}/>
+        <Route path='/admin/users-list' element={ <ProtectedRoutes> <UsersList /></ProtectedRoutes>}/>
+        <Route path='/admin/doctors-list' element={ <ProtectedRoutes> <DoctorsList /></ProtectedRoutes>}/>
+        <Route path='/profile' element={ <ProtectedRoutes> <Profile /></ProtectedRoutes>}/>
       </Routes>
     </BrowserRouter>
   );
