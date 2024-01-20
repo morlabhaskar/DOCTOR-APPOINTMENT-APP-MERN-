@@ -61,7 +61,7 @@
     border-radius: 5px;
     background-color: rgb(247, 242, 180);
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     padding: 0px 10px;
     

@@ -45,7 +45,7 @@ const ProtectedRoutes = (props) => {
 
         }
 
-    }, [user,getUser]);
+    }, [user]);
     return (
         props.children
     )

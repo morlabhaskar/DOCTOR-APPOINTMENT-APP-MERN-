@@ -15,6 +15,7 @@ const Layout = ({ children }) => {
     const [collapse, setCollapse] = useState(false)
     const { user } = useSelector((state) => state.user)
     const navigate = useNavigate()
+
     const usermenu = [
         {
             name: "Home",
@@ -34,6 +35,24 @@ const Layout = ({ children }) => {
         {
             name: "Profile",
             path: "/profile",
+            icon: "ri-user-line"
+        }
+    ];
+
+    const doctormenu = [
+        {
+            name: "Home",
+            path: "/",
+            icon: "ri-home-line"
+        },
+        {
+            name: "Appointments",
+            path: "/appointments",
+            icon: "ri-file-list-line"
+        },
+        {
+            name: "Profile",
+            path: `/doctor/profile/ ${user?._id}`,
             icon: "ri-user-line"
         }
     ];
@@ -60,12 +79,15 @@ const Layout = ({ children }) => {
             icon: "ri-user-line"
         },
     ];
-    const MenuTobeRendered = user?.isAdmin ? adminmenu : usermenu;
+    const MenuTobeRendered = user?.isAdmin ? adminmenu : user?.isDoctor ? doctormenu : usermenu ;
+    const role = user?.isAdmin ? "Admin" : user?.isDoctor ? "Doctor" : "User" ;
 
     return (
         <div className='main'>
             <div className='layout'>
+                
                 <div className={`${collapse ? 'collapsed-slidebar' : 'slide'}`}>
+                
                     {!collapse ? <i className="ri-close-line active-icon" onClick={() => setCollapse(true)}></i> : < i className="ri-menu-line active-icon" onClick={() => setCollapse(false)}></i>}
                     {MenuTobeRendered.map((menu) => {
                         const isActive = location.pathname === menu.path;
@@ -86,6 +108,7 @@ const Layout = ({ children }) => {
                 </div>
                 <div className='content'>
                     <div className='header '>
+                    <h1>{role}</h1>
                         {/* {!collapse ? <i className="ri-close-circle-line active-icon" onClick={() => setCollapse(true)}></i> : < i className="ri-menu-line active-icon"  onClick={() => setCollapse(false)}></i>} */}
                         <div className=' notification-icon-div'>
                             <Badge dot={show} count={user?.unseenNotifications.length} onClick={()=>navigate("/notifications")} >

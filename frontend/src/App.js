@@ -37,8 +37,8 @@ function App() {
         <Route path='/appointments' element={ <ProtectedRoutes> <Appointments /></ProtectedRoutes>}/>
         <Route path='/notifications' element={ <ProtectedRoutes> <Notifications /></ProtectedRoutes>}/>
         <Route path='/admin/users-list' element={ <ProtectedRoutes> <UsersList /></ProtectedRoutes>}/>
-        <Route path='/admin/doctors-list' element={ <ProtectedRoutes> <DoctorsList /></ProtectedRoutes>}/>
-        <Route path='/profile' element={ <ProtectedRoutes> <Profile /></ProtectedRoutes>}/>
+        <Route path='/admin/doctorlist' element={ <ProtectedRoutes> <DoctorsList /></ProtectedRoutes>}/>
+        <Route path='/doctor/profile/:userId' element={ <ProtectedRoutes> <Profile /></ProtectedRoutes>}/>
       </Routes>
     </BrowserRouter>
   );
