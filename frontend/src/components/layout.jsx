@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './layout.css'
 import { useSelector } from 'react-redux';
 import { Badge, Switch } from 'antd';
-// const {unseenNotifications} from
 
 const Layout = ({ children }) => {
     const [show,setShow] = useState(false)
@@ -70,7 +69,7 @@ const Layout = ({ children }) => {
         },
         {
             name: "Doctors",
-            path: "/admin/doctors-list",
+            path: "/admin/doctorlist",
             icon: "ri-hospital-line"
         },
         {

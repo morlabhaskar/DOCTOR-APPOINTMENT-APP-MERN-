@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import Layout from '../../components/layout';
 import { Col, Row } from 'antd';
-import Doctor from '../../components/Doctor';
+import Doctor from '../../components/Doctor.jsx';
 import { useDispatch } from 'react-redux';
-import {showLoading , hideLoading} from '../../redux/alertslice'
+import {showLoading , hideLoading} from '../../redux/alertslice.jsx'
 
 const Home = () => {
   const [doctors,setDoctors] = useState([]);
@@ -13,21 +13,21 @@ const Home = () => {
   const getData = async () => {
     try {
       dispatch(showLoading())
-      const response = await axios.get('/api/user/get-all-approved-doctors', {}, {
+      const response = await axios.get("/api/user/get-all-approved-doctors", {
         headers: {
           Authorization: "Bearer" + localStorage.getItem("token"),
         },
       })
       dispatch(hideLoading())
       if (response.data.success) {
-        setDoctors(response.data.data)
+        setDoctors(response.data.data);
       }
 
     }
     catch (error) {
       dispatch(hideLoading())
       console.log(error);
-      console.log("Bhaskar")
+      
 
     }
   };
@@ -37,15 +37,16 @@ const Home = () => {
       getData();
     // }
     
-  }, [])
+  },[])
 
   return (
     <Layout>
       <Row gutter={20}>
-        {doctors.map((doctor)=>(
-          <Col span={8} xs={24} sm={24} lg={8}>
+        {doctors.map((doctor)=>( 
+           <Col span={8} xs={24} sm={24} lg={8}>
             <Doctor doctor={doctor} />
           </Col>
+          // {/* <h1>Bhaskar</h1> */}
 
         ))}
       </Row>

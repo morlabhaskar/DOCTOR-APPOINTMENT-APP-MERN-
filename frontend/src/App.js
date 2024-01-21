@@ -13,7 +13,7 @@ import Appointments from './pages/Appointments';
 import Notifications from './components/Notifications';
 import UsersList from './pages/admin/UsersList';
 import DoctorsList from './pages/admin/DoctorsList';
-import Profile from './pages/admin/Profile';
+import Profile from './pages/Doctor/Profile';
 
 
 function App() {
