@@ -39,9 +39,13 @@ const doctorSchema = new mongoose.Schema({
         require: true,
     },
     timings: {
-        type: Array,
+        type: String,
         require: true,
     },
+    // timings: {
+    //     type: [String],
+    //     required: true,
+    // },
     status:{
         type:String,
         default:"pending"

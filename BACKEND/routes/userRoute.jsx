@@ -4,7 +4,8 @@ const User = require("../models/usermodel.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authMiddleware = require ("./authmiddleware.jsx");
-const Doctor = require ("../models/doctormodel.js")
+const Doctor = require ("../models/doctormodel.js");
+const Appointment = require("../models/appointmentsmodel.js");
 
 router.post('/register', async (req, res) => {
     try {
@@ -151,11 +152,60 @@ router.get('/get-all-approved-doctors',async(req,res)=>{
     } 
     catch (error) {
         console.log(error);
-        res.status(500).send({message:"Error Doctors fetching!",success:false,error,});
+        res.status(500).send({message:"Error Doctors fetching!",success:false,error,}); 
+    }
+})
+
+router.post("/book-appointment",authMiddleware,async(req,res)=>{
+    try {
+        req.body.status = 'pending';
+        const newAppointment = new Appointment(req.body);
+        await newAppointment.save();
+        //pushing notifications to doctor based on his userid
+        const user = await User.findOne({_id:req.body.doctorInfo.userId});
+        user.unseenNotifications.push({
+            type:"new-appointment-request",
+            message:`A new appointment request has been made by ${req.body.userInfo.name}`,
+            onClickPath:"/doctor/appointments"
+        })
+        await user.save();
+        res.status(200).send({
+            message:"Appointment Booked Successfully",
+            success:true,
+        })
+
+    } 
+    catch (error) {
+        console.log(error);
+        res.status(500).send({message:"Error Booking Appointment!",success:false,error});
 
         
     }
 })
+
+// router.post("/check-booking-availability",authMiddleware,async(req,res)=>{
+//     try {
+//         req.body.status = 'pending';
+//         const newAppointment = new Appointment(req.body);
+//         await newAppointment.save();
+//         //pushing notifications to doctor based on his userid
+//         const user = await User.findOne({_id:req.body.doctorInfo.userId});
+//         user.unseenNotifications.push({
+//             type:"new-appointment-request",
+//             message:`A new appointment request has been made by ${req.body.userInfo.name}`,
+//             onClickPath:"/doctor/appointments"
+//         })
+//         await user.save();
+        
+
+//     } 
+//     catch (error) {
+//         console.log(error);
+//         res.status(500).send({message:"Error Booking Appointment!",success:false,error});
+
+        
+//     }
+// })
 
 
 

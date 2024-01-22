@@ -10,7 +10,6 @@
     opacity: 0.5;
     background-color: rgba(0, 0, 0, 0.300);
     z-index: 9999;
-
 }
 .spinner-parent .spinner-grow {
     height: 5rem;

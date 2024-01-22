@@ -27,8 +27,6 @@ const Home = () => {
     catch (error) {
       dispatch(hideLoading())
       console.log(error);
-      
-
     }
   };
 
@@ -46,8 +44,6 @@ const Home = () => {
            <Col span={8} xs={24} sm={24} lg={8}>
             <Doctor doctor={doctor} />
           </Col>
-          // {/* <h1>Bhaskar</h1> */}
-
         ))}
       </Row>
     </Layout>

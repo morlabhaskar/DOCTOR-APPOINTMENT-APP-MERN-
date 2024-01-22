@@ -73,7 +73,7 @@ const Profile = () => {
       dispatch(showLoading())
       const response = await axios.post(
         "/api/doctor/get-doctor-info-by-user-id",
-        { userId: params.userrId },
+        { userId: params.userId },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -90,10 +90,10 @@ const Profile = () => {
     }
   }
   useEffect(() => {
-    if (!user) {
+    // if (!user) {
       getDoctorData();
 
-    }
+    // }
 
   }, []);
 

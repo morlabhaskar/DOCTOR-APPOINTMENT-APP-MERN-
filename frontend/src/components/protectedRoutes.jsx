@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
-// import {useNavigate} from "react-router-dom";
+// import {Navigate} from "react-router-dom";
 import { setUser } from '../redux/userslice';
 import { showLoading, hideLoading } from '../redux/alertslice';
 
@@ -30,13 +30,13 @@ const ProtectedRoutes = (props) => {
             }
             else {
                 localStorage.clear();
-                navigate('/login');
+                navigate('/main');
             }
         }
         catch (error) {
             dispatch(showLoading())
             localStorage.clear();
-            navigate('/login')
+            navigate('/main')
         }
     }
     useEffect(() => {
