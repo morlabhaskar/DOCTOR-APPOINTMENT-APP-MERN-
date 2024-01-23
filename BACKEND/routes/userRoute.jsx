@@ -98,6 +98,7 @@ router.post('/apply-doctor-account', authMiddleware ,async (req, res) => {
     catch (error) {
         res.status(500).send({ message: "Error Applying doctor account", success: false,error})
         console.log(error)
+        // console.log("Bhaskar")
 
     }
 });

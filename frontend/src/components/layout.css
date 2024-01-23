@@ -9,6 +9,7 @@
     /* background-color: rgb(0, 0, 0); */
     border-radius: 4px;
     width: 99%;
+    min-height: 98vh;
     display: flex;
     border: 1px solid white;
 }
@@ -16,12 +17,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(169, 123, 210);
+    /* background-color: rgb(169, 123, 210); */
     width: 15%;
+    height: 97vh;
     color: white;
     list-style-type: none;
     text-decoration: none;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 5px;
     margin: 5px;
 }
@@ -29,11 +31,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(169, 123, 210);
+    /* background-color: rgb(169, 123, 210); */
     height: 99%;
     width: 4%;
     color: white;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 5px;
     margin: 5px;
 }
@@ -43,23 +45,24 @@
     margin: 5px;
 }
 .main .layout .content .header {
-    border: 1px solid black;
+    border: 1px solid white;
     width: 100%;
     height: 10%;
     margin-bottom: 5px;
     border-radius: 5px;
-    background-color: rgb(247, 242, 180);
+    background-color: rgb(69, 69, 65);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0px 10px;  
+    padding: 15px;
 }
 .main .layout .content .body {
-    border: 1px solid black;
+    border: 1px solid white;
     width: 100%;
     height: 88%;
     border-radius: 5px;
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
     padding: 10px;
 }
 .menu-item {
@@ -103,4 +106,10 @@
 }
 Table {
     border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+.doctor-card {
+    background-color: rgb(255, 255, 255);
+    color: black;
 }

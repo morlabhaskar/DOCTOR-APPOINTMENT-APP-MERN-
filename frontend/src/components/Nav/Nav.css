@@ -1,0 +1,31 @@
+.nav-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: aliceblue;
+    color: black;
+    /* position: fixed;
+    width: 100vw; */
+}
+.nav-total .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(164, 122, 122); */
+}
+.nav-total .logo h1 {
+    color: rgb(252, 116, 5);
+}
+.nav-total .logo img {
+    height: 50px;
+}
+.nav-total a {
+    text-decoration: none;
+}
+
+.nav-total Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

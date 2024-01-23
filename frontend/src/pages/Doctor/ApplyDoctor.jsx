@@ -1,4 +1,4 @@
-import { Col, Input, Row, Form, TimePicker, Button } from 'antd'
+// import { Col, Input, Row, Form, TimePicker, Button } from 'antd'
 import Layout from '../../components/layout'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -31,8 +31,6 @@ const ApplyDoctor = () => {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             });
-            // console.log("Timings[0] raw:", values.timings[0]);
-            // console.log("Timings[1] raw:", values.timings[1]);
             dispatch(hideLoading())
             if (response.data.success) {
                 toast.success(response.data.message)

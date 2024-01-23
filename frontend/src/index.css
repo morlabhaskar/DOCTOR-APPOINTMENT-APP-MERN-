@@ -12,5 +12,7 @@ code {
     monospace;
 }
 #root {
-  /* background-color: black; */
+  background-color: black;
+  min-height: 100vh;
+  color: white;
 }
