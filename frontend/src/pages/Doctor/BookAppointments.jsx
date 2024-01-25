@@ -100,7 +100,7 @@ const BookAppointments = () => {
                                     // setTime(moment(values).format("HH:mm"));
                                 }
                                 />
-                                <Button className='primary-button'>Check Availability</Button>
+                                {/* <Button className='primary-button'>Check Availability</Button> */}
                                 <Button className='primary-button' onClick={bookNow}>Book Now</Button>
                             </div>
                         </Col>

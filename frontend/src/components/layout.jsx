@@ -5,10 +5,6 @@ import { useSelector } from 'react-redux';
 import { Badge } from 'antd';
 
 const Layout = ({ children }) => {
-    // const [show,setShow] = useState(false)
-    // const onChange = (checked) => {
-        // setShow(checked);
-    //   };
 
     const location = useLocation();
     const [collapse, setCollapse] = useState(false)
@@ -84,10 +80,7 @@ const Layout = ({ children }) => {
     return (
         <div className='main'>
             <div className='layout'>
-                
-                
                 <div className={`${collapse ? 'collapsed-slidebar' : 'slide'}`}>
-                
                     {!collapse ? <i className="ri-close-line active-icon" onClick={() => setCollapse(true)}></i> : < i className="ri-menu-line active-icon" onClick={() => setCollapse(false)}></i>}
                     {MenuTobeRendered.map((menu) => {
                         const isActive = location.pathname === menu.path;
@@ -99,29 +92,20 @@ const Layout = ({ children }) => {
 
                     <div className={`menu-item`} onClick={() => {
                         localStorage.clear()
-                        navigate('/login')
+                        navigate('/main')
                     }}>
                         <i className='ri-logout-box-line'></i>
-                        {!collapse && <Link to='/login'>Logout</Link>}
+                        {!collapse && <Link to='/main'>Logout</Link>}
                     </div>
-                    
-
                 </div>
                 <div className='content'>
                     <div className='header '>
                     <p>{role}</p>
-
-                   
-                        {/* {!collapse ? <i className="ri-close-circle-line active-icon" onClick={() => setCollapse(true)}></i> : < i className="ri-menu-line active-icon"  onClick={() => setCollapse(false)}></i>} */}
                         <div className=' notification-icon-div'>
-                            {/* <Badge dot={show} count={user?.unseenNotifications.length} onClick={()=>navigate("/notifications")} > */}
                             <Badge count={user?.unseenNotifications.length} onClick={()=>navigate("/notifications")} >
                                 <i class="ri-notification-line notification-icon mx-4"></i>
                             </Badge>
-                            {/* <Switch onChange={onChange} checked={show} /> */}
-
                             <Link to='profile' className='profile-link mx-3'>Hi..{user?.name}</Link>
-                            
                         </div>
                     </div>
                     <div className='body'>

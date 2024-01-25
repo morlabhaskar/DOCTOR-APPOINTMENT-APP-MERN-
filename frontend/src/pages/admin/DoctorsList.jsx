@@ -81,7 +81,7 @@ const DoctorsList = () => {
             render: (text, record) => (
                 <div className='d-flex'>
                     {record.status === "pending" && <p className='anchor' onClick={() => changeDoctorStatus(record, "approved")}>Approve</p>}
-                    {record.status === "approved" && <p className='anchor' onClick={() => changeDoctorStatus(record, "blocked")}>Block</p>}
+                    {record.status === "approved" && <p className='anchor' onClick={() => changeDoctorStatus(record, "blocked")}>Active</p>}
                 </div>
             )
         }

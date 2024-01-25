@@ -49,7 +49,7 @@ const UsersList = () => {
             dataIndex:"actions",
             render: (text,record) => (
                 <div className='d-flex'>
-                    <p className='anchor'>Block</p>
+                    <p className='anchor'>Active</p>
                 </div>
             )
         }

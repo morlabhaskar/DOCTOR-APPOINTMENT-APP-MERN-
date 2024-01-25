@@ -16,6 +16,8 @@ import DoctorsList from './pages/admin/DoctorsList';
 import Profile from './pages/Doctor/Profile';
 import BookAppointments from './pages/Doctor/BookAppointments';
 import Main from './components/main';
+import Footer from '../src/components/Footer/Footer.jsx';
+import Profile1 from './pages/admin/Profile.jsx';
 // import Nav from './components/Nav';
 
 
@@ -45,7 +47,10 @@ function App() {
         <Route path='/admin/doctorlist' element={<ProtectedRoutes> <DoctorsList /></ProtectedRoutes>} />
         <Route path='/doctor/profile/:userId' element={<ProtectedRoutes> <Profile /></ProtectedRoutes>} />
         <Route path='/book-appointment/:doctorId' element={<ProtectedRoutes> <BookAppointments /></ProtectedRoutes>} />
+        <Route path='/profile' element={<ProtectedRoutes> <Profile1 /></ProtectedRoutes>} />
       </Routes>
+      <Footer/>
+
     </BrowserRouter>
   );
 }

@@ -1,96 +1,116 @@
 .main {
-    /* background-color: rgb(0, 0, 0); */
     padding: 5px;
     justify-content: center;
     align-items: center;
     display: flex;
 }
+
 .main .layout {
-    /* background-color: rgb(0, 0, 0); */
     border-radius: 4px;
     width: 99%;
-    min-height: 98vh;
     display: flex;
-    border: 1px solid white;
 }
+
 .main .layout .slide {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: rgb(169, 123, 210); */
     width: 15%;
-    height: 97vh;
     color: white;
     list-style-type: none;
     text-decoration: none;
     border: 1px solid white;
     border-radius: 5px;
     margin: 5px;
+    background-color: rgb(99, 93, 93);
+    padding: 10px 0px;
 }
+
 .collapsed-slidebar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: rgb(169, 123, 210); */
-    height: 99%;
     width: 4%;
     color: white;
     border: 1px solid white;
     border-radius: 5px;
     margin: 5px;
+    background-color: rgb(99, 93, 93);
+    padding: 10px 0px;
 }
+
 .main .layout .content {
     width: 100%;
-    height: 100%;
     margin: 5px;
 }
+
 .main .layout .content .header {
     border: 1px solid white;
     width: 100%;
-    height: 10%;
+    color: black;
     margin-bottom: 5px;
     border-radius: 5px;
-    background-color: rgb(69, 69, 65);
+    background-color: rgb(239, 239, 155);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 10px;  
+    padding: 0px 10px;
     padding: 15px;
 }
+
+.notification-icon-div {
+    display: flex;
+}
+
 .main .layout .content .body {
     border: 1px solid white;
     width: 100%;
-    height: 88%;
     border-radius: 5px;
-    /* background-color: rgb(255, 255, 255); */
+    background-color: rgb(181, 244, 253);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    object-fit: cover;
     padding: 10px;
+    color: black;
+    min-height: 78%;
 }
+
 .menu-item {
     margin-top: 35px;
 }
+
 .menu-item a {
     color: white;
     text-decoration: none;
 }
+
 .active-menu-item {
-    background-color: rgb(49, 49, 49);
-    border-radius: 2px;
+    background-color: rgb(75, 72, 72);
+    border-radius: 3px;
+    padding: 3px 15px;
+
 }
+
 .active-icon {
     font-size: 30px;
+
 }
+
 .notification-icon {
     font-size: 25px;
 }
+
 .profile-link {
     background-color: rgb(130, 4, 248);
-    padding: 4px 8px ;
+    padding: 4px 8px;
     border-radius: 4px;
 }
+
 .notification-icon-div a {
     text-decoration: none;
     color: white;
 }
+
 .ant-badge {
     width: 2rem;
     display: flex;
@@ -98,18 +118,43 @@
     justify-content: center;
     align-items: center;
 }
+
 .anchor {
     cursor: pointer;
 }
+
 .anchor:hover {
     color: red;
 }
+
 Table {
     border: 1px solid black;
-    background-color: black;
-    color: white;
 }
+
 .doctor-card {
     background-color: rgb(255, 255, 255);
     color: black;
+}
+
+
+
+@media only screen and (max-width: 700px) {
+    .main .layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main .layout .slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+
+    }
+
+    .active-icon {
+        display: none;
+
+    }
 }
